@@ -6,8 +6,14 @@ DEBUG = False
 
 ALLOWED_HOSTS = config(
     "ALLOWED_HOSTS",
+    default="",
     cast=Csv(),
-    default=".onrender.com"
+)
+
+CSRF_TRUSTED_ORIGINS = config(
+    "CSRF_TRUSTED_ORIGINS",
+    cast=Csv(),
+    default="https://earlyedge-frontend.vercel.app",
 )
 
 STATIC_URL = "/static/"
