@@ -23,6 +23,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://earlyedge-frontend.vercel.app/",
+]
 
 # Application definition
 
