@@ -4,6 +4,10 @@ from .base import *  # noqa: F401,F403
 
 DEBUG = False
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
