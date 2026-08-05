@@ -4,13 +4,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
-from apps.admin_security.views import HealthCheckAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('robots.txt', robots_txt, name='robots-txt'),
     path('sitemap.xml', sitemap_xml, name='sitemap-xml'),
-    path("api/health/", HealthCheckAPIView.as_view(), name="health_check"),
     path('api/auth/', include('authentication.urls')),
     path('api/admin-security/', include('admin_security.urls')),
     path('api/support/', include('support.urls')),

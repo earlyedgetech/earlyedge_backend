@@ -5,6 +5,7 @@ from . import views
 app_name = 'admin_security'
 
 urlpatterns = [
+    path("api/health/", views.HealthCheckAPIView.as_view(), name="health_check"),
     # Activity / admin logs (audit trail)
     path('logs/', views.AdminLogListCreateView.as_view(), name='admin-log-list-create'),
     path('logs/export/', views.AdminLogExportView.as_view(), name='admin-log-export'),
