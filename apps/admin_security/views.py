@@ -20,7 +20,20 @@ from .serializers import (
     AdminLogSerializer,
     SecuritySettingsSerializer,
 )
+from rest_framework import status
 
+class HealthCheckAPIView(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request):
+        return Response(
+            {
+                "status": "success",
+                "message": "Backend is running"
+            },
+            status=status.HTTP_200_OK
+        )
 
 def get_client_ip(request):
     forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
