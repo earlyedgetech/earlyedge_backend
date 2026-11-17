@@ -7,7 +7,7 @@ from django.conf import settings as django_settings
 from django.core.mail import EmailMultiAlternatives
 
 from .models import NotificationTemplate, SiteSettings
-
+from django.conf import settings
 # Fallback content used only if a template row is somehow missing (the seed
 # migration always creates all 8 — this is defensive, not the normal path).
 _FALLBACK_SUBJECTS = {
@@ -80,6 +80,13 @@ def send_branded_email(to_email, subject, body_text):
 
     email = EmailMultiAlternatives(subject=subject, body=body_text, from_email=from_email, to=[to_email])
     email.attach_alternative(html, 'text/html')
+
+    print("EMAIL_BACKEND:", settings.EMAIL_BACKEND)
+    print("EMAIL_HOST:", settings.EMAIL_HOST)
+    print("EMAIL_PORT:", settings.EMAIL_PORT)
+    print("EMAIL_HOST_USER:", settings.EMAIL_HOST_USER)
+    print("EMAIL_USE_TLS:", settings.EMAIL_USE_TLS)
+    print("FROM_EMAIL:", from_email)
     email.send()
 
 
